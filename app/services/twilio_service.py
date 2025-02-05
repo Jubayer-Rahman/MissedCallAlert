@@ -10,8 +10,8 @@ class TwilioService(NotificationAbstract):
         try:
             message = self.client.messages.create(
                 body=message,
-                from_=Config.TWILIO_PHONE_NUMBER,
-                to=recipient
+                from_=f"whatsapp:{Config.TWILIO_PHONE_NUMBER}",
+                to=f"whatsapp:{recipient}"
             )
             return message.sid
         except Exception as e:
